@@ -1,4 +1,10 @@
 #!/usr/bin/python3
+"""
+Task 0:
+Fetch https://intranet.hbtn.io/status
+
+0-hbtn_status.py
+"""
 from urllib import request, error
 
 if __name__ == "__main__":
@@ -10,11 +16,6 @@ if __name__ == "__main__":
             print("\t- type: {}".format(type(body)))
             print("\t- content: {}".format(body))
             print("\t- utf8 content: {}".format(body.decode('utf-8')))
-    except error.HTTPError as e:
-        if e.code == 403:  # Forbidden error code
-            print("Failed to fetch URL: Forbidden - You may not have permission to access the resource.")
-        else:
-            print("Failed to fetch URL:", e.code, e.reason)
     except error.URLError as e:
         print("Failed to fetch URL:", e.reason)
     except Exception as e:
