@@ -1,17 +1,22 @@
-import urllib.request
+#!/usr/bin/python3
+"""
+Task 0:
+Fetch https://intranet.hbtn.io/status
 
-url = "https://alu-intranet.hbtn.io/status"
+0-hbtn_status.py
+"""
+from urllib import request, error
 
-# Fetch the URL and read the response
-with urllib.request.urlopen(url) as response:
-    # Read the content of the response
-    content = response.read()
-    
-    # Convert the content to utf-8 format
-    utf8_content = content.decode('utf-8')
-
-# Display the body of the response
-print("Body response:")
-print("\t- type:", type(content))
-print("\t- content:", content)
-print("\t- utf8 content:", utf8_content)
+if __name__ == "__main__":
+    try:
+        req = request.Request('https://intranet.hbtn.io/status')
+        with request.urlopen(req) as response:
+            body = response.read()
+            print("Body response:")
+            print("\t- type: {}".format(type(body)))
+            print("\t- content: {}".format(body))
+            print("\t- utf8 content: {}".format(body.decode('utf-8')))
+    except error.URLError as e:
+        print("Failed to fetch URL:", e.reason)
+    except Exception as e:
+        print("Error:", e)
