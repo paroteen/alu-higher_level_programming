@@ -1,17 +1,17 @@
-#!/usr/bin/python3
-"""
-Task 0:
-Fetch https://intranet.hbtn.io/status
+import urllib.request
 
-0-hbtn_status.py
-"""
-from urllib import request
+url = "https://alu-intranet.hbtn.io/status"
 
-if __name__ == "__main__":
-    req = request.Request('https://intranet.hbtn.io/status')
-    with request.urlopen(req) as response:
-        body = response.read()
-        print("Body response:")
-        print("\t- type: {}".format(type(body)))
-        print("\t- content: {}".format(body))
-        print("\t- utf8 content: {}".format(body.decode('utf-8')))
+# Fetch the URL and read the response
+with urllib.request.urlopen(url) as response:
+    # Read the content of the response
+    content = response.read()
+    
+    # Convert the content to utf-8 format
+    utf8_content = content.decode('utf-8')
+
+# Display the body of the response
+print("Body response:")
+print("\t- type:", type(content))
+print("\t- content:", content)
+print("\t- utf8 content:", utf8_content)
