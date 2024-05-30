@@ -1,12 +1,15 @@
 #!/usr/bin/node
-const args = process.argv;
-const fileA = args[2];
+
+/* a script that reads and prints the content of a file  */
 
 const fs = require('fs');
 
-try {
-  console.log(fs.readFileSync(fileA, 'utf8'));
-} catch (err) {
-  /* errors */
-  console.log(err);
-}
+const filePath = process.argv[2];
+
+fs.readFile(filePath, 'utf-8', (err, data) => {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log(data);
+  }
+});
